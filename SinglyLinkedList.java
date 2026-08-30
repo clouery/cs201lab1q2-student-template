@@ -76,7 +76,7 @@ public class SinglyLinkedList<E> {
             cur = cur.getNext();
         }
 
-        return res;
+        return res.trim();
     }
 
     public E removeLast() {
