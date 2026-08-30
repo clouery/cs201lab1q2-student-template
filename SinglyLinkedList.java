@@ -68,16 +68,16 @@ public class SinglyLinkedList<E> {
 
     // Write your codes below
     public String toString() {
-        StringBuilder sb = new StringBuilder();
         Node<E> current = head;
 
+        String res = "";
+
         while (current != null) {
-            sb.append(current.getElement());
-            sb.append(" ");
+            res += current.getElement().toString();
             current = current.getNext();
         }
 
-        return sb.toString();
+        return res;
     }
 
     public E removeLast() {
