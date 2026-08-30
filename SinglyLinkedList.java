@@ -69,15 +69,16 @@ public class SinglyLinkedList<E> {
 
     // Write your codes below
     public String toString(){
-        Node<E> startPtr = head;
-        String res = "";
+        Node<E> cur = head;
+        StringBuilder res = new StringBuilder();
 
-        while (startPtr != null) {
-            res += startPtr.getElement() + " ";
-            startPtr = startPtr.getNext();
+        while(cur != null) {
+            res.append(cur.getElement()).append(" ");
+            cur = cur.getNext();
         }
-        
-        return res;
+
+        return res.toString().trim();
+
     }
 
     public E removeLast(){
@@ -110,6 +111,12 @@ public class SinglyLinkedList<E> {
     }
 
     public void reverse(){       
+
+        if(size == 1) {
+            return;
+        }
+
+
         Node<E> prev = null;
         Node<E> cur = head;
 
