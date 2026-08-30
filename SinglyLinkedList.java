@@ -68,15 +68,14 @@ public class SinglyLinkedList<E> {
 
     // Write your codes below
     public String toString() {
-        Node<E> cur = head;
-        String res = "";
-
-        while (cur != null) {
-            res += cur.getElement() + " ";
-            cur = cur.getNext();
+        StringBuilder sb = new StringBuilder();
+        Node<E> current = head.getNext();
+        while (current != null) {
+            sb.append(current.getElement());
+            sb.append(" ");
+            current = current.getNext();
         }
-
-        return res.trim();
+        return sb.toString();
     }
 
     public E removeLast() {
