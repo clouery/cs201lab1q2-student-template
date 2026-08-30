@@ -94,15 +94,13 @@ public class SinglyLinkedList<E> {
             return answer;
         }
 
-        Node<E> startPtr = head;
+        Node<E> current = head;
 
-        // continue until we find the second last
-        while (startPtr.getNext() != tail) {
-            startPtr = startPtr.getNext();
+        while (current.getNext() != tail) {
+            current = current.getNext();
         }
 
-        // update tail to that and set the next to null and reduce the size
-        tail = startPtr;
+        tail = current;
         tail.setNext(null);
         size--;
 
@@ -110,31 +108,22 @@ public class SinglyLinkedList<E> {
     }
 
     public void reverse() {
-
-        if (size == 1) {
-            return;
-        }
-
         Node<E> prev = null;
         Node<E> cur = head;
 
+        // Old head becomes new tail
         tail = head;
 
         while (cur != null) {
-            // store the next
             Node<E> next = cur.getNext();
 
-            // point the current to the prev
             cur.setNext(prev);
 
-            // set the prev to cur
             prev = cur;
-
-            // set cur to next
             cur = next;
         }
 
-        // set the head to the first (last) node
+        // Old tail becomes new head
         head = prev;
     }
 }
