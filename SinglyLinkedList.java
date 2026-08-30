@@ -68,6 +68,9 @@ public class SinglyLinkedList<E> {
 
     // Write your codes below
     public String toString() {
+        if(isEmpty()) {
+            return "";
+        }
         Node<E> current = head;
 
         String res = "";
