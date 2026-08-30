@@ -69,12 +69,14 @@ public class SinglyLinkedList<E> {
     // Write your codes below
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        Node<E> current = head.getNext();
+        Node<E> current = head;
+
         while (current != null) {
             sb.append(current.getElement());
             sb.append(" ");
             current = current.getNext();
         }
+
         return sb.toString();
     }
 
