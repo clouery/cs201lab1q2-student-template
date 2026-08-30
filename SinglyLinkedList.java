@@ -1,3 +1,5 @@
+
+
 public class SinglyLinkedList<E> {
     
     private Node<E> head = null;
@@ -67,14 +69,67 @@ public class SinglyLinkedList<E> {
 
     // Write your codes below
     public String toString(){
-     
+        Node<E> startPtr = head;
+        String res = "";
+
+        while (startPtr != null) {
+            res += startPtr.getElement() + " ";
+            startPtr = startPtr.getNext();
+        }
+        
+        return res;
     }
 
     public E removeLast(){
-      
+        if(isEmpty()) {
+            return null;
+        }
+
+        E answer = tail.getElement();
+
+        if(head == tail) {
+            head = null;
+            tail = null;
+            size--;
+            return answer;
+        }
+
+        Node<E> startPtr = head;
+
+        // continue until we find the second last
+        while (startPtr.getNext() != tail) {
+            startPtr = startPtr.getNext(); 
+        }
+
+        // update tail to that and set the next to null and reduce the size
+        tail = startPtr;
+        tail.setNext(null);
+        size--;
+
+        return answer;
     }
 
     public void reverse(){       
-                 
+        Node<E> prev = null;
+        Node<E> cur = head;
+
+        tail = head;
+
+        while (cur != null){
+            // store the next
+            Node<E> next = cur.getNext();
+
+            // point the current to the prev
+            cur.setNext(prev);
+
+            // set the prev to cur
+            prev = cur;
+            
+            // set cur to next
+            cur = next;
+        }
+
+        // set the head to the first (last) node
+        head = prev;
     }
 }
